@@ -1,4 +1,9 @@
 import logging
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.ndimage.filters import gaussian_filter
+import pandas as pd
+print(pd.__version__)
 
 
 class BuildingMovementSimulator:
@@ -74,6 +79,33 @@ class BuildingMovementSimulator:
         self.logger.info("Simulation completed.")
 
 
+
+# sample_data = pd.read_csv('auto_cad_data_extraction_test_230909.csv')
+
+# Attempt to load the CSV data by skipping problematic lines
+sample_data = pd.read_csv('auto_cad_data_extraction_test_230909.csv', on_bad_lines='skip')
+
+# Display the first few rows of the data
+sample_data.head()
+
+sample_data['Start X'].unique()
+
+
+sample_data['Dateigröße'].unique()
+
+sample_data.columns
+
+test = pd.DataFrame(sample_data)
+
+test.info()
+for i in test.columns:
+    print(i)
+
 # Example usage
 simulator = BuildingMovementSimulator(data=sample_data)
 simulator.run_simulation()
+
+
+
+
+
